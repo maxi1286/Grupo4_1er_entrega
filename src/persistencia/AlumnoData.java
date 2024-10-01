@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelo.Alumno;
 import modelo.Conexion;
@@ -31,7 +33,7 @@ public class AlumnoData {
 
         String sql = "INSERT INTO alumno (Nombre, Apellido)" + "value(?,?)";
         try {
-            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, alumno.getNombre());
             ps.setString(2, alumno.getApellido());
             ps.executeUpdate();
@@ -47,6 +49,23 @@ public class AlumnoData {
 
         }
 
+    }
+    
+    public void BorrarAlumno(int id){
+        try {
+            String sql = "DELETE FROM `alumno` WHERE  id = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            int exito = ps.executeUpdate();
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "el alumno fue eliminado correctamente");
+                
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
 }

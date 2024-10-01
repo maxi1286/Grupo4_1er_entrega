@@ -13,12 +13,19 @@ public class test_de_consola {
         if (con != null) {
             Alumno fernando = new Alumno("fernando", "azurita");
             AlumnoData alu = new AlumnoData();
-            alu.GuardarAlumno(fernando);
+            
+            //alu.GuardarAlumno(fernando);
+            
             Alumno noelia = new Alumno ("Noelia", "merino");
             AlumnoData alu2 = new AlumnoData();
-            alu2.GuardarAlumno(noelia);
+            //alu2.GuardarAlumno(noelia);
+            //alu.BorrarAlumno(14);
+            //ESTAN GENERADOS LOS METODOS DE AGREGAR Y BORRAR ALUMNO , TODO FUNCIONA CORRECTAMENTE
+           
+           
         } else {
             System.out.println("Error: No se pudo establecer la conexión con la base de datos.");
         }
     }
+        
 }

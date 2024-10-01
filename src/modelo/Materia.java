@@ -10,62 +10,62 @@ package modelo;
  * @author Nedisane
  */
 public class Materia {
-    public int IdMateria;
-    public String Nombre;
-    public int Anio;
-    public boolean Estado;
+    public int idMateria;
+    public String nombre;
+    public int anio;
+    public boolean estado;
 
     public Materia() {
     }
 
-    public Materia(String Nombre, int Anio, boolean Estado) {
-        this.Nombre = Nombre;
-        this.Anio = Anio;
-        this.Estado = Estado;
+    public Materia(String nombre, int anio, boolean estado) {
+        this.nombre = nombre;
+        this.anio = anio;
+        this.estado = estado;
     }
 
-    public Materia(int IdMateria, String Nombre, int Anio, boolean Estado) {
-        this.IdMateria = IdMateria;
-        this.Nombre = Nombre;
-        this.Anio = Anio;
-        this.Estado = Estado;
+    public Materia(int idMateria, String nombre, int anio, boolean estado) {
+        this.idMateria = idMateria;
+        this.nombre = nombre;
+        this.anio = anio;
+        this.estado = estado;
     }
 
     public int getIdMateria() {
-        return IdMateria;
-    }
-
-    public void setIdMateria(int IdMateria) {
-        this.IdMateria = IdMateria;
+        return idMateria;
     }
 
     public String getNombre() {
-        return Nombre;
-    }
-
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
+        return nombre;
     }
 
     public int getAnio() {
-        return Anio;
-    }
-
-    public void setAnio(int Anio) {
-        this.Anio = Anio;
+        return anio;
     }
 
     public boolean isEstado() {
-        return Estado;
+        return estado;
     }
 
-    public void setEstado(boolean Estado) {
-        this.Estado = Estado;
-    } 
-    
+    public void setIdMateria(int idMateria) {
+        this.idMateria = idMateria;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setAnio(int anio) {
+        this.anio = anio;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
     @Override
     public String toString() {
-        return IdMateria+" "+Nombre+" Año: "+Anio;
+        return "Materia{" + "idMateria=" + idMateria + ", nombre=" + nombre + ", anio=" + anio + ", estado=" + estado + '}';
     }
-      
+    
 }

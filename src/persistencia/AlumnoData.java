@@ -102,7 +102,6 @@ public class AlumnoData {
         ArrayList<Alumno> listaAlumnos = new ArrayList();
         try{
             String query = "SELECT * FROM alumno";
-            System.out.println(query);
             PreparedStatement ps = con.prepareStatement(query);
             ResultSet resultado = ps.executeQuery();
             while(resultado.next()){

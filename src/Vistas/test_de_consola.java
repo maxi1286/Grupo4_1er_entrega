@@ -14,7 +14,7 @@ public class test_de_consola {
           //pruebaBorrarAlumno(con);
           //pruebaBajaLogica(con);
           //pruebaAltaLogica(con);
-          pruebaListarAlumnos(con);
+          //pruebaListarAlumnos(con);
         } else {
             System.out.println("Error: No se pudo establecer la conexión con la base de datos.");
         }

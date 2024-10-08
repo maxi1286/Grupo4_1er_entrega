@@ -142,7 +142,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiNotasActionPerformed
 
     private void jmiListaInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiListaInscripcionActionPerformed
-       escritorio.repaint();
+        escritorio.repaint();
         VistaListarInscripciones a1 = new VistaListarInscripciones();
         a1.setVisible(true);
         escritorio.add(a1);

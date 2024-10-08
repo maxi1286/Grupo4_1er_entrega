@@ -4,17 +4,22 @@
  */
 package Vistas;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author zalaz
  */
 public class VistaMostrarAlumnos extends javax.swing.JInternalFrame {
 
+    DefaultTableModel modelo = new DefaultTableModel();
+
     /**
      * Creates new form VistaMostrarAlumnos
      */
     public VistaMostrarAlumnos() {
         initComponents();
+        iniciarTabla();
     }
 
     /**
@@ -28,9 +33,12 @@ public class VistaMostrarAlumnos extends javax.swing.JInternalFrame {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTMostrarAlumnno = new javax.swing.JTable();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        setClosable(true);
+        setTitle("Alumnos");
+
+        jTMostrarAlumnno.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -41,7 +49,7 @@ public class VistaMostrarAlumnos extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTMostrarAlumnno);
 
         jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -74,6 +82,17 @@ public class VistaMostrarAlumnos extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTMostrarAlumnno;
     // End of variables declaration//GEN-END:variables
+public void iniciarTabla() {
+
+        modelo.addColumn("Documento");
+        modelo.addColumn("Apellido");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Estado");
+        modelo.addColumn("Fecha de nacimiento");
+
+        jTMostrarAlumnno.setModel(modelo);
+    }
+
 }

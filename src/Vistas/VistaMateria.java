@@ -38,10 +38,11 @@ public class VistaMateria extends javax.swing.JInternalFrame {
         jBNuevo = new javax.swing.JButton();
         jBExaminar = new javax.swing.JButton();
         jBGuardar = new javax.swing.JButton();
-        jBSalir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         ChekEstadoMateria = new javax.swing.JCheckBox();
         jBMostrarMateria = new javax.swing.JButton();
+
+        setClosable(true);
 
         jbCodigo.setText("Codigo");
 
@@ -57,7 +58,6 @@ public class VistaMateria extends javax.swing.JInternalFrame {
             }
         });
 
-        jbBuscar.setBackground(new java.awt.Color(0, 51, 51));
         jbBuscar.setText("Buscar");
         jbBuscar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -66,11 +66,6 @@ public class VistaMateria extends javax.swing.JInternalFrame {
         jBExaminar.setText("Examinar");
 
         jBGuardar.setText("Guardar");
-
-        jBSalir.setBackground(new java.awt.Color(204, 0, 0));
-        jBSalir.setForeground(new java.awt.Color(0, 0, 0));
-        jBSalir.setText("X");
-        jBSalir.setBorder(null);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("MATERIA");
@@ -102,7 +97,6 @@ public class VistaMateria extends javax.swing.JInternalFrame {
         jpMateria.setLayer(jBNuevo, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jpMateria.setLayer(jBExaminar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jpMateria.setLayer(jBGuardar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jpMateria.setLayer(jBSalir, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jpMateria.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jpMateria.setLayer(ChekEstadoMateria, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jpMateria.setLayer(jBMostrarMateria, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -111,53 +105,46 @@ public class VistaMateria extends javax.swing.JInternalFrame {
         jpMateria.setLayout(jpMateriaLayout);
         jpMateriaLayout.setHorizontalGroup(
             jpMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpMateriaLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(jpMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jbAño)
-                    .addGroup(jpMateriaLayout.createSequentialGroup()
-                        .addGroup(jpMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jbCodigo)
-                            .addComponent(jbEstado))
-                        .addGap(38, 38, 38)
-                        .addGroup(jpMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jpMateriaLayout.createSequentialGroup()
-                                .addGroup(jpMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jpMateriaLayout.createSequentialGroup()
-                                        .addComponent(jTCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(52, 52, 52)
-                                        .addComponent(jbBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jTNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jtAño, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 10, Short.MAX_VALUE))
-                            .addGroup(jpMateriaLayout.createSequentialGroup()
-                                .addComponent(ChekEstadoMateria)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jBMostrarMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpMateriaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jpMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(103, 103, 103))
+            .addGroup(jpMateriaLayout.createSequentialGroup()
+                .addGroup(jpMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpMateriaLayout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(58, 58, 58)
-                        .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(jpMateriaLayout.createSequentialGroup()
-                        .addComponent(jBNuevo)
                         .addGap(28, 28, 28)
-                        .addComponent(jBExaminar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBGuardar)
-                        .addGap(33, 33, 33))))
+                        .addGroup(jpMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jbAño)
+                            .addGroup(jpMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jpMateriaLayout.createSequentialGroup()
+                                    .addComponent(jBNuevo)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jBExaminar)
+                                    .addGap(39, 39, 39)
+                                    .addComponent(jBGuardar))
+                                .addGroup(jpMateriaLayout.createSequentialGroup()
+                                    .addGroup(jpMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jbCodigo)
+                                        .addComponent(jbEstado))
+                                    .addGap(38, 38, 38)
+                                    .addGroup(jpMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jpMateriaLayout.createSequentialGroup()
+                                            .addComponent(jTCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(52, 52, 52)
+                                            .addComponent(jbBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jTNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jtAño, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(ChekEstadoMateria))))))
+                    .addGroup(jpMateriaLayout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addComponent(jBMostrarMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         jpMateriaLayout.setVerticalGroup(
             jpMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpMateriaLayout.createSequentialGroup()
-                .addGroup(jpMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addGroup(jpMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbCodigo)
@@ -174,9 +161,10 @@ public class VistaMateria extends javax.swing.JInternalFrame {
                 .addGap(25, 25, 25)
                 .addGroup(jpMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jbEstado)
-                    .addComponent(ChekEstadoMateria)
-                    .addComponent(jBMostrarMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                    .addComponent(ChekEstadoMateria))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(jBMostrarMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBNuevo)
                     .addComponent(jBGuardar)
@@ -212,7 +200,7 @@ public class VistaMateria extends javax.swing.JInternalFrame {
 
     private void jBMostrarMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMostrarMateriaActionPerformed
         jpMateria.repaint();
-        VistaListarInscripciones a1 = new VistaListarInscripciones();
+        VistaMostrarMateria a1 = new VistaMostrarMateria();
         a1.setVisible(true);
         jpMateria.add(a1);
         jpMateria.moveToFront(a1);
@@ -225,7 +213,6 @@ public class VistaMateria extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBMostrarMateria;
     private javax.swing.JButton jBNuevo;
-    private javax.swing.JButton jBSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField jTCodigo;

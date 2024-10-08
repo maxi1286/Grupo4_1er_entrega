@@ -14,7 +14,9 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
      * Creates new form VistaAlumno
      */
     public VistaAlumno() {
+        
         initComponents();
+        DesactivarCampos();
     }
 
     /**
@@ -253,7 +255,8 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnMostrarAlumnosActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        // TODO add your handling code here:
+        ActivarCampos();
+        
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void checkEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkEstadoActionPerformed
@@ -295,4 +298,22 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtDocumento;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
+
+    private void ActivarCampos() {
+        txtDocumento.setEnabled(true);
+        txtApellido.setEnabled(true);
+        txtApellido.setEnabled(true);
+        txtNombre.setEnabled(true);
+        checkEstado.setEnabled(true);
+        dcFechaNacimiento.setEnabled(true);
+    }
+
+    private void DesactivarCampos() {
+        txtDocumento.setEnabled(false);
+        txtApellido.setEnabled(false);
+        txtApellido.setEnabled(false);
+        txtNombre.setEnabled(false);
+        checkEstado.setEnabled(false);
+        dcFechaNacimiento.setEnabled(false);
+    }
 }

@@ -137,7 +137,7 @@ public class materiaData {
         return materia;
     }
      
-      public void actualizarAlumno(Materia materia) {
+      public void actualizarMateria(Materia materia) {
 
         String query = "UPDATE materia SET idMateria=?, nombre = ?,anio = ?, estado = ? WHERE idMateria = ?";
 

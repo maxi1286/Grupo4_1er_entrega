@@ -81,6 +81,7 @@ public class VistaMostrarAlumnos extends javax.swing.JInternalFrame {
             }
         });
 
+        btnAlta.setBackground(new java.awt.Color(0, 102, 0));
         btnAlta.setText("Dar de Alta");
         btnAlta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

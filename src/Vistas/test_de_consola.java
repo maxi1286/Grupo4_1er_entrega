@@ -123,6 +123,6 @@ public class test_de_consola {
     }
     
     public static void pruebaActualizarAlumno(materiaData con){
-        con.actualizarAlumno(new Materia(2,"Labo",2,false));
+        con.actualizarMateria(new Materia(2,"Labo",2,false));
     }
 }

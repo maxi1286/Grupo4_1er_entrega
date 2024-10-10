@@ -54,6 +54,8 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
         btnGuardar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
 
+        jPanel1.setBackground(new java.awt.Color(51, 51, 255));
+
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTitulo.setText("Alumno");
 
@@ -247,6 +249,7 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
         } else {
             data.GuardarAlumno(new Alumno(dni, apellido, nombre, fecha, estado));
         }
+        LimpiarCampos();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnMostrarAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarAlumnosActionPerformed
@@ -317,5 +320,12 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
         txtNombre.setEnabled(false);
         checkEstado.setEnabled(false);
         dcFechaNacimiento.setEnabled(false);
+    }
+    private void LimpiarCampos(){
+        txtDocumento.setText(" ");
+        txtApellido.setText(" ");
+        txtNombre.setText(" ");
+        checkEstado.isSelected();
+        dcFechaNacimiento.setDate(null);
     }
 }

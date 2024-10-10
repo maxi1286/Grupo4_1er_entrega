@@ -27,7 +27,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         escritorio = new javax.swing.JDesktopPane();
-        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jmInscripcion = new javax.swing.JMenu();
         jmiInscribir = new javax.swing.JMenuItem();
@@ -39,21 +38,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("FORMULARIO DE INSCRIPCION");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/universidad.jpg"))); // NOI18N
-
-        escritorio.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(escritorioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 976, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 651, Short.MAX_VALUE)
         );
 
         jmInscripcion.setText("Inscripcion");
@@ -118,6 +111,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmAlumnoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmAlumnoMouseClicked
+        escritorio.removeAll();
         escritorio.repaint();
         VistaAlumno a1 = new VistaAlumno();
         a1.setVisible(true);
@@ -126,6 +120,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmAlumnoMouseClicked
 
     private void jmMateriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmMateriaMouseClicked
+        escritorio.removeAll();
         escritorio.repaint();
         VistaMateria a1 = new VistaMateria();
         a1.setVisible(true);
@@ -134,6 +129,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmMateriaMouseClicked
 
     private void jmiInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiInscribirActionPerformed
+         escritorio.removeAll();
         escritorio.repaint();
         VistaInscripcion a1 = new VistaInscripcion();
         a1.setVisible(true);
@@ -150,6 +146,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiNotasActionPerformed
 
     private void jmiListaInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiListaInscripcionActionPerformed
+         escritorio.removeAll();
         escritorio.repaint();
         VistaListarInscripciones a1 = new VistaListarInscripciones();
         a1.setVisible(true);
@@ -194,7 +191,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
-    private javax.swing.JButton jButton1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jmAlumno;
     private javax.swing.JMenu jmInscripcion;

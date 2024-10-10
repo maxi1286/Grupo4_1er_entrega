@@ -54,7 +54,18 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
         btnGuardar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
 
-        jPanel1.setBackground(new java.awt.Color(51, 51, 255));
+        javax.swing.GroupLayout jdpAlumnoLayout = new javax.swing.GroupLayout(jdpAlumno);
+        jdpAlumno.setLayout(jdpAlumnoLayout);
+        jdpAlumnoLayout.setHorizontalGroup(
+            jdpAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jdpAlumnoLayout.setVerticalGroup(
+            jdpAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 498, Short.MAX_VALUE)
+        );
+
+        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTitulo.setText("Alumno");
@@ -68,6 +79,11 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
         });
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         lblApellido.setText("Apellido:");
 
@@ -204,32 +220,19 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
                 .addGap(32, 32, 32))
         );
 
-        jdpAlumno.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout jdpAlumnoLayout = new javax.swing.GroupLayout(jdpAlumno);
-        jdpAlumno.setLayout(jdpAlumnoLayout);
-        jdpAlumnoLayout.setHorizontalGroup(
-            jdpAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jdpAlumnoLayout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 608, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jdpAlumnoLayout.setVerticalGroup(
-            jdpAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jdpAlumno))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jdpAlumno)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -281,6 +284,16 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
         hide();
     }//GEN-LAST:event_btnSalirActionPerformed
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        AlumnoData data = new AlumnoData();
+        int dni= Integer.parseInt(txtDocumento.getText());
+        Alumno al=data.buscarAlumnoPorDni(dni);
+        txtApellido.setText(al.getApellido());
+        txtNombre.setText(al.getNombre());
+        checkEstado.setSelected(al.isEstado());
+        dcFechaNacimiento.setDate(Date.from(al.getFechaNacimiento().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
@@ -321,10 +334,11 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
         checkEstado.setEnabled(false);
         dcFechaNacimiento.setEnabled(false);
     }
+    
     private void LimpiarCampos(){
-        txtDocumento.setText(" ");
-        txtApellido.setText(" ");
-        txtNombre.setText(" ");
+        txtDocumento.setText("");
+        txtApellido.setText("");
+        txtNombre.setText("");
         checkEstado.isSelected();
         dcFechaNacimiento.setDate(null);
     }

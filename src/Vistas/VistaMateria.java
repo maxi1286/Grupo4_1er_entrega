@@ -63,6 +63,11 @@ public class VistaMateria extends javax.swing.JInternalFrame {
 
         jbBuscar.setText("Buscar");
         jbBuscar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarActionPerformed(evt);
+            }
+        });
 
         jBNuevo.setText("Nuevo");
         jBNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -262,6 +267,11 @@ public class VistaMateria extends javax.swing.JInternalFrame {
          hide();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
+         jTCodigo.setEnabled(true);
+         
+    }//GEN-LAST:event_jbBuscarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox ChekEstadoMateria;
@@ -281,7 +291,7 @@ public class VistaMateria extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtAño;
     // End of variables declaration//GEN-END:variables
     private void ActivarCampos() {
-        jTCodigo.setEnabled(true);
+       
         jTNombre.setEnabled(true);
         jtAño.setEnabled(true);
         ChekEstadoMateria.setEnabled(true);

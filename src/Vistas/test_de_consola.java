@@ -13,13 +13,13 @@ public class test_de_consola {
         materiaData cone = new materiaData();
         if (con != null) {
             //ALUMNO       
-            pruebaGuardarAlumnos(con); //Cada vez que se vuelva a guardar reiniciar el autoIncremental a 1 en la parte de operaciones
+            //pruebaGuardarAlumnos(con); //Cada vez que se vuelva a guardar reiniciar el autoIncremental a 1 en la parte de operaciones
             //pruebaBorrarAlumno(con);
             //pruebaBajaLogicaAlumno(con);
             //pruebaAltaLogicaAlumno(con);
             //pruebaBuscarAlumno(con);
             //pruebaListarAlumnos(con);
-            //pruebaActualizarAlumno(con);
+            pruebaActualizarAlumno(con);
 
             //MATERIA
             //pruebaGuardarMateria(cone);//Cada vez que se vuelva a guardar reiniciar el autoIncremental a 1 en la parte de operaciones
@@ -74,11 +74,11 @@ public class test_de_consola {
     }
     
     public static void pruebaBuscarAlumno(AlumnoData con){
-        System.out.println(con.buscarAlumno(2));
+        System.out.println(con.buscarAlumno(9));
     }
     
     public static void pruebaActualizarAlumno(AlumnoData con) {
-        con.actualizarAlumno(new Alumno(3, 36681811, "Abregu", "jose", LocalDate.of(1994, 4, 20), false));
+        con.actualizarAlumno(new Alumno(6, 366818191, "Abregu", "jose", LocalDate.of(1994, 4, 20), false));
     }
 
     public static void pruebaGuardarMateria(materiaData con) {

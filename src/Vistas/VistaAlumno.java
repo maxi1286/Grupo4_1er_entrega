@@ -4,6 +4,12 @@
  */
 package Vistas;
 
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import modelo.Alumno;
+import persistencia.AlumnoData;
+
 /**
  *
  * @author zalaz
@@ -14,7 +20,7 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
      * Creates new form VistaAlumno
      */
     public VistaAlumno() {
-        
+
         initComponents();
         DesactivarCampos();
     }
@@ -243,7 +249,19 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // TODO add your handling code here:
+        AlumnoData data = new AlumnoData();
+        int dni = Integer.parseInt(txtDocumento.getText());
+        String apellido = txtApellido.getText();
+        String nombre = txtNombre.getText();
+        boolean estado = checkEstado.isSelected();
+        LocalDate fecha = dcFechaNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+        if (data.buscarAlumnoPorDni(dni).getId()!=0) {
+            Alumno alumnoActual = new Alumno(data.buscarAlumnoPorDni(dni).getId(), dni, apellido, nombre, fecha, estado);
+            data.actualizarAlumno(alumnoActual);
+        } else {
+            data.GuardarAlumno(new Alumno(dni, apellido, nombre, fecha, estado));
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnMostrarAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarAlumnosActionPerformed
@@ -256,7 +274,7 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         ActivarCampos();
-        
+
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void checkEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkEstadoActionPerformed
@@ -272,7 +290,7 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtDocumentoActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-         hide();
+        hide();
     }//GEN-LAST:event_btnSalirActionPerformed
 
 

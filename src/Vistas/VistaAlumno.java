@@ -53,7 +53,6 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
         btnMostrarAlumnos = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTitulo.setText("Alumno");
@@ -116,13 +115,6 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
             }
         });
 
-        btnEliminar.setText("Eliminar");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -134,10 +126,8 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
                         .addComponent(btnNuevo)
                         .addGap(18, 18, 18)
                         .addComponent(btnGuardar)
-                        .addGap(28, 28, 28)
+                        .addGap(130, 130, 130)
                         .addComponent(btnMostrarAlumnos)
-                        .addGap(29, 29, 29)
-                        .addComponent(btnEliminar)
                         .addGap(18, 18, 18)
                         .addComponent(btnSalir)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -208,7 +198,6 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
                     .addComponent(btnNuevo)
                     .addComponent(btnGuardar)
                     .addComponent(btnSalir)
-                    .addComponent(btnEliminar)
                     .addComponent(btnMostrarAlumnos))
                 .addGap(32, 32, 32))
         );
@@ -243,10 +232,6 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         AlumnoData data = new AlumnoData();
@@ -296,7 +281,6 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnMostrarAlumnos;
     private javax.swing.JButton btnNuevo;

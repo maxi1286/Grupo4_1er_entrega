@@ -13,7 +13,7 @@ public class test_de_consola {
         materiaData cone = new materiaData();
         if (con != null) {
             //ALUMNO       
-            //pruebaGuardarAlumnos(con); //Cada vez que se vuelva a guardar reiniciar el autoIncremental a 1 en la parte de operaciones
+            pruebaGuardarAlumnos(con); //Cada vez que se vuelva a guardar reiniciar el autoIncremental a 1 en la parte de operaciones
             //pruebaBorrarAlumno(con);
             //pruebaBajaLogicaAlumno(con);
             //pruebaAltaLogicaAlumno(con);
@@ -49,6 +49,9 @@ public class test_de_consola {
         con.BorrarAlumno(3);
         con.BorrarAlumno(4);
         con.BorrarAlumno(5);
+        con.BorrarAlumno(6);
+        con.BorrarAlumno(8);
+        con.BorrarAlumno(14);
     }
 
     public static void pruebaBajaLogicaAlumno(AlumnoData con) {

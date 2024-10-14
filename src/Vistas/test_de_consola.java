@@ -125,4 +125,5 @@ public class test_de_consola {
     public static void pruebaActualizarAlumno(materiaData con){
         con.actualizarMateria(new Materia(2,"Labo",2,false));
     }
+    
 }

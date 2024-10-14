@@ -25,7 +25,7 @@ public class VistaListarInscripciones extends javax.swing.JInternalFrame {
     };
     private ArrayList<Materia> listaM;
     private ArrayList<Alumno>listaA;
-    private Inscripcion incdata;
+    private Inscripcion inscdata;
     private materiaData mData;
     private AlumnoData aData;
     
@@ -44,7 +44,7 @@ public class VistaListarInscripciones extends javax.swing.JInternalFrame {
         aData = new AlumnoData();
         listaA =aData.listaAlumno();
         modelo = new DefaultTableModel();
-        incdata = new Inscripcion();
+        inscdata = new Inscripcion();
         mData = new materiaData();
         
         CargarAlumnos();
@@ -228,5 +228,11 @@ public class VistaListarInscripciones extends javax.swing.JInternalFrame {
             modelo.removeRow(i);
         }
     }
+    private void CargarDatosNoIncriptas(){
+        //borrar fila de la tabla
+        Alumno select= (Alumno) jComboalumno.getSelectedItem();
+        
+    }
+    
 
 }

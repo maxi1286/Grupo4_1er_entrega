@@ -14,8 +14,6 @@ public class Alumno {
     public Alumno() {
     }
 
-    
-    
     public Alumno(int id, int dni, String apellido, String nombre, LocalDate fechaNacimiento, boolean estado) {
         this.id = id;
         this.dni = dni;
@@ -83,9 +81,13 @@ public class Alumno {
 
     @Override
     public String toString() {
-        return "Alumno{" + "id=" + id + ", dni=" + dni + ", apellido=" + apellido + ", nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + ", estado=" + estado + '}';
+        return    dni+", "+apellido +", "+nombre;
     }
+}
+
+                
 
 
    
-}
+
+

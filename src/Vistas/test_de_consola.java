@@ -13,13 +13,13 @@ public class test_de_consola {
         materiaData cone = new materiaData();
         if (con != null) {
             //ALUMNO       
-            pruebaGuardarAlumnos(con); //Cada vez que se vuelva a guardar reiniciar el autoIncremental a 1 en la parte de operaciones
+            //pruebaGuardarAlumnos(con); //Cada vez que se vuelva a guardar reiniciar el autoIncremental a 1 en la parte de operaciones
             //pruebaBorrarAlumno(con);
             //pruebaBajaLogicaAlumno(con);
             //pruebaAltaLogicaAlumno(con);
             //pruebaBuscarAlumno(con);
             //pruebaListarAlumnos(con);
-            pruebaActualizarAlumno(con);
+            //pruebaActualizarAlumno(con);
 
             //MATERIA
             //pruebaGuardarMateria(cone);//Cada vez que se vuelva a guardar reiniciar el autoIncremental a 1 en la parte de operaciones

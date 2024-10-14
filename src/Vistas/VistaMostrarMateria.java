@@ -46,17 +46,11 @@ public class VistaMostrarMateria extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTMostrarMateria = new javax.swing.JTable();
         jBExaminar = new javax.swing.JButton();
         jbBaja = new javax.swing.JButton();
         jbAlta = new javax.swing.JButton();
-
-        jButton1.setText("jButton1");
-
-        jButton2.setText("jButton2");
 
         setClosable(true);
         setTitle("Materias");
@@ -162,8 +156,6 @@ public class VistaMostrarMateria extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBExaminar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTMostrarMateria;
     private javax.swing.JButton jbAlta;

@@ -54,17 +54,6 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
         btnGuardar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
 
-        javax.swing.GroupLayout jdpAlumnoLayout = new javax.swing.GroupLayout(jdpAlumno);
-        jdpAlumno.setLayout(jdpAlumnoLayout);
-        jdpAlumnoLayout.setHorizontalGroup(
-            jdpAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jdpAlumnoLayout.setVerticalGroup(
-            jdpAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 498, Short.MAX_VALUE)
-        );
-
         jPanel1.setBackground(new java.awt.Color(153, 204, 255));
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -211,7 +200,7 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblFechaNacimiento)
                     .addComponent(dcFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevo)
                     .addComponent(btnGuardar)
@@ -220,19 +209,40 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
                 .addGap(32, 32, 32))
         );
 
+        jdpAlumno.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout jdpAlumnoLayout = new javax.swing.GroupLayout(jdpAlumno);
+        jdpAlumno.setLayout(jdpAlumnoLayout);
+        jdpAlumnoLayout.setHorizontalGroup(
+            jdpAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jdpAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jdpAlumnoLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        jdpAlumnoLayout.setVerticalGroup(
+            jdpAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 521, Short.MAX_VALUE)
+            .addGroup(jdpAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jdpAlumnoLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
                 .addComponent(jdpAlumno))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jdpAlumno)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -246,7 +256,7 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
         boolean estado = checkEstado.isSelected();
         LocalDate fecha = dcFechaNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
-        if (data.buscarAlumnoPorDni(dni).getId()!=0) {
+        if (data.buscarAlumnoPorDni(dni).getId() != 0) {
             Alumno alumnoActual = new Alumno(data.buscarAlumnoPorDni(dni).getId(), dni, apellido, nombre, fecha, estado);
             data.actualizarAlumno(alumnoActual);
         } else {
@@ -286,8 +296,8 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         AlumnoData data = new AlumnoData();
-        int dni= Integer.parseInt(txtDocumento.getText());
-        Alumno al=data.buscarAlumnoPorDni(dni);
+        int dni = Integer.parseInt(txtDocumento.getText());
+        Alumno al = data.buscarAlumnoPorDni(dni);
         txtApellido.setText(al.getApellido());
         txtNombre.setText(al.getNombre());
         checkEstado.setSelected(al.isEstado());
@@ -334,8 +344,8 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
         checkEstado.setEnabled(false);
         dcFechaNacimiento.setEnabled(false);
     }
-    
-    private void LimpiarCampos(){
+
+    private void LimpiarCampos() {
         txtDocumento.setText("");
         txtApellido.setText("");
         txtNombre.setText("");

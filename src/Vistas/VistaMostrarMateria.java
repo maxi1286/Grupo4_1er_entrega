@@ -21,8 +21,11 @@ import persistencia.materiaData;
 public class VistaMostrarMateria extends javax.swing.JInternalFrame {
 
     materiaData data = new materiaData();
-    ArrayList<Materia> listamat = new ArrayList();
-    DefaultTableModel modelo = new DefaultTableModel();
+    DefaultTableModel modelo = new DefaultTableModel() {
+        public boolean isCellEditable(int fila, int columna) {
+            return false;
+        }
+    };
 
     public boolean isCellEditable(int fila, int columna) {
         return false;
@@ -182,7 +185,7 @@ public class VistaMostrarMateria extends javax.swing.JInternalFrame {
             } else {
                 es = "Inactivo";
             }
-            modelo.addRow(new Object[]{materia.getIdMateria(),materia.getNombre(),materia.getAnio(),materia.isEstado()});
+            modelo.addRow(new Object[]{materia.getIdMateria(),materia.getNombre(),materia.getAnio(),es});
             
         }
     }

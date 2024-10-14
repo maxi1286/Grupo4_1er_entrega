@@ -138,8 +138,6 @@ public class AlumnoData {
                 alumno.setDni(dni);
                 alumno.setFechaNacimiento(resultado.getDate("fechaNacimiento").toLocalDate());
                 alumno.setEstado(resultado.getBoolean("estado"));
-            }else{
-                //JOptionPane.showMessageDialog(null, "Alumno no encontrado");
             }
             ps.close();
         } catch (Exception ex) {

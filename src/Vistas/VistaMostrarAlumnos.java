@@ -4,7 +4,7 @@
  */
 package Vistas;
 
-import java.util.ArrayList;
+
 import javax.swing.table.DefaultTableModel;
 import modelo.Alumno;
 import persistencia.AlumnoData;
@@ -16,7 +16,6 @@ import persistencia.AlumnoData;
 public class VistaMostrarAlumnos extends javax.swing.JInternalFrame {
 
     AlumnoData data = new AlumnoData();
-    ArrayList<Alumno> listaAl = new ArrayList();
     DefaultTableModel modelo = new DefaultTableModel() {
         public boolean isCellEditable(int fila, int columna) {
             return false;

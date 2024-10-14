@@ -4,7 +4,13 @@
  */
 package Vistas;
 
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import modelo.Alumno;
+import modelo.Inscripcion;
+import modelo.Materia;
+import persistencia.AlumnoData;
+import persistencia.materiaData;
 
 /**
  *
@@ -17,6 +23,13 @@ public class VistaListarInscripciones extends javax.swing.JInternalFrame {
             return false;
         }
     };
+    private ArrayList<Materia> listaM;
+    private ArrayList<Alumno>listaA;
+    private Inscripcion incdata;
+    private materiaData mData;
+    private AlumnoData aData;
+    
+    
     
     public boolean isCellEditable(int fila, int columna) {
         return false;
@@ -28,6 +41,17 @@ public class VistaListarInscripciones extends javax.swing.JInternalFrame {
     public VistaListarInscripciones() {
         initComponents();
         iniciarTabla();
+        aData = new AlumnoData();
+        listaA =aData.listaAlumno();
+        modelo = new DefaultTableModel();
+        incdata = new Inscripcion();
+        mData = new materiaData();
+        
+        CargarAlumnos();
+        
+        
+        
+        
     }
 
     /**
@@ -81,10 +105,17 @@ public class VistaListarInscripciones extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTIncripcion);
 
         jBIncribir.setText("incribir");
+        jBIncribir.setEnabled(false);
 
-        jBAnular.setText("aunlar inscripcion");
+        jBAnular.setText("anular inscripcion");
+        jBAnular.setEnabled(false);
 
         jBsalir.setText("salir");
+        jBsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBsalirActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("seleccione un alumno");
 
@@ -154,12 +185,16 @@ public class VistaListarInscripciones extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboalumnoActionPerformed
 
+    private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
+      hide();
+    }//GEN-LAST:event_jBsalirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAnular;
     private javax.swing.JButton jBIncribir;
     private javax.swing.JButton jBsalir;
-    private javax.swing.JComboBox<String> jComboalumno;
+    private javax.swing.JComboBox<Alumno> jComboalumno;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -169,16 +204,21 @@ public class VistaListarInscripciones extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTIncripcion;
     // End of variables declaration//GEN-END:variables
     public void iniciarTabla() {
-
+        ArrayList <Object> filacabecera = new ArrayList();
         modelo.addColumn("Id");
         modelo.addColumn("Nombre");
         modelo.addColumn("año");
-        
-
+        for(Object it : filacabecera)
+                modelo.addColumn(it);
+    
        jTIncripcion.setModel(modelo);
     }
 
-
+    public void CargarAlumnos(){
+        for (Alumno item :listaA ) {
+            jComboalumno.addItem(item);
+        }
+    }
 
 
 

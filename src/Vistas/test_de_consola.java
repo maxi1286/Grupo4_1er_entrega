@@ -35,11 +35,12 @@ public class test_de_consola {
             //pruebaListaMaterias(cone);
             //pruebaActualizarAlumno(cone);
            
-            
             //INSCRIPCION
-            // pruebaIncribirAlumno(id, con, cone);
+            //pruebaIncribirAlumno(id, con, cone);
             //pruebaActualizarNota(id,con,cone);
-            pruebaBorrarInscripcion(id,con,cone);
+            //pruebaBorrarInscripcion(id,con,cone);
+            pruebaObtenerInscripciones( id, con,  cone);
+            
         } else {
             System.out.println("Error: No se pudo establecer la conexión con la base de datos.");
         }
@@ -156,4 +157,15 @@ public class test_de_consola {
     public static void pruebaBorrarInscripcion(IncripcionData insc, AlumnoData con, materiaData cone){
         insc.BorrarInscripcion(3, 7);
     }
-}
+
+    public static void pruebaObtenerInscripciones(IncripcionData insc, AlumnoData con, materiaData cone){
+        for (Inscripcion inc: insc.ObtenerInscripciones()) {
+            System.out.println("id = "+inc.getIdInscripto());
+            System.out.println("apellido = "+inc.getAlumno().getApellido());
+            System.out.println("materia = "+inc.getMateria().getNombre());
+        }
+            
+        }
+    }
+
+

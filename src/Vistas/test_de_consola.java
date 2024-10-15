@@ -1,16 +1,21 @@
 package Vistas;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import modelo.Alumno;
+import modelo.Inscripcion;
 import modelo.Materia;
 import persistencia.AlumnoData;
+import persistencia.IncripcionData;
 import persistencia.materiaData;
 
 public class test_de_consola {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         AlumnoData con = new AlumnoData();
         materiaData cone = new materiaData();
+        IncripcionData id = new IncripcionData();
+
         if (con != null) {
             //ALUMNO       
             //pruebaGuardarAlumnos(con); //Cada vez que se vuelva a guardar reiniciar el autoIncremental a 1 en la parte de operaciones
@@ -29,7 +34,12 @@ public class test_de_consola {
             //pruebaBuscarMateria(cone);
             //pruebaListaMaterias(cone);
             //pruebaActualizarAlumno(cone);
-
+           
+            
+            //INSCRIPCION
+            // pruebaIncribirAlumno(id, con, cone);
+            //pruebaActualizarNota(id,con,cone);
+            pruebaBorrarInscripcion(id,con,cone);
         } else {
             System.out.println("Error: No se pudo establecer la conexión con la base de datos.");
         }
@@ -75,11 +85,11 @@ public class test_de_consola {
             System.out.println(alumno.toString());
         }
     }
-    
-    public static void pruebaBuscarAlumno(AlumnoData con){
+
+    public static void pruebaBuscarAlumno(AlumnoData con) {
         System.out.println(con.buscarAlumno(9));
     }
-    
+
     public static void pruebaActualizarAlumno(AlumnoData con) {
         con.actualizarAlumno(new Alumno(6, 366818191, "Abregu", "jose", LocalDate.of(1994, 4, 20), false));
     }
@@ -112,18 +122,38 @@ public class test_de_consola {
         con.bajaLogica(4);
     }
 
-    public static void pruebaBuscarMateria(materiaData con){
+    public static void pruebaBuscarMateria(materiaData con) {
         System.out.println(con.BuscarMateria(3));
     }
-    
+
     public static void pruebaListaMaterias(materiaData con) {
         for (Materia materia : con.listaMateria()) {
             System.out.println(materia.toString());
         }
     }
-    
-    public static void pruebaActualizarAlumno(materiaData con){
-        con.actualizarMateria(new Materia(2,"Labo",2,false));
+
+    public static void pruebaActualizarAlumno(materiaData con) {
+        con.actualizarMateria(new Materia(2, "Labo", 2, false));
+    }
+
+    public static void pruebaIncribirAlumno(IncripcionData insc, AlumnoData con, materiaData cone) throws SQLException {
+
+        Alumno al = con.buscarAlumno(3);
+        Materia mat = cone.BuscarMateria(7);
+        Inscripcion ins = new Inscripcion(6, al, mat);
+
+        insc.GuardarIncripcion(ins);
+        
+
+    }
+
+    public static void pruebaActualizarNota(IncripcionData insc, AlumnoData con, materiaData cone) {
+        insc.ActualizarNota(3, 7, 10);
+        
+
     }
     
+    public static void pruebaBorrarInscripcion(IncripcionData insc, AlumnoData con, materiaData cone){
+        insc.BorrarInscripcion(3, 7);
+    }
 }

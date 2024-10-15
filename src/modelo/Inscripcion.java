@@ -20,12 +20,14 @@ public class Inscripcion {
     }
 
     
-    public Inscripcion(int idInscripto, int nota, Alumno alumno, Materia materia) {
-        this.idInscripto = idInscripto;
+    public Inscripcion( int nota, Alumno alumno, Materia materia) {
+        
         this.nota = nota;
         this.alumno = alumno;
         this.materia = materia;
     }
+
+    
 
     public int getIdInscripto() {
         return idInscripto;

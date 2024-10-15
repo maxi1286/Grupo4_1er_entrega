@@ -34,13 +34,17 @@ public class test_de_consola {
             //pruebaBuscarMateria(cone);
             //pruebaListaMaterias(cone);
             //pruebaActualizarAlumno(cone);
-           
+            
             //INSCRIPCION
-            //pruebaIncribirAlumno(id, con, cone);
+           //pruebaIncribirAlumno(id, con, cone);
             //pruebaActualizarNota(id,con,cone);
             //pruebaBorrarInscripcion(id,con,cone);
-            pruebaObtenerInscripciones( id, con,  cone);
-            
+            //pruebaObtenerInscripciones( id, con,  cone);
+            //pruebaobternerMateriasCursadas(id,cone);
+             //pruebaObtenerInscripcionesporAlumno(id, con);
+             //pruebaObtenerMateriasNoCursadas( con);
+        
+        
         } else {
             System.out.println("Error: No se pudo establecer la conexión con la base de datos.");
         }
@@ -139,33 +143,55 @@ public class test_de_consola {
 
     public static void pruebaIncribirAlumno(IncripcionData insc, AlumnoData con, materiaData cone) throws SQLException {
 
-        Alumno al = con.buscarAlumno(3);
+        Alumno al = con.buscarAlumno(5);
         Materia mat = cone.BuscarMateria(7);
-        Inscripcion ins = new Inscripcion(6, al, mat);
+        Inscripcion ins = new Inscripcion(8, al, mat);
 
         insc.GuardarIncripcion(ins);
-        
 
     }
 
     public static void pruebaActualizarNota(IncripcionData insc, AlumnoData con, materiaData cone) {
         insc.ActualizarNota(3, 7, 10);
-        
 
     }
-    
-    public static void pruebaBorrarInscripcion(IncripcionData insc, AlumnoData con, materiaData cone){
+
+    public static void pruebaBorrarInscripcion(IncripcionData insc, AlumnoData con, materiaData cone) {
         insc.BorrarInscripcion(3, 7);
     }
 
-    public static void pruebaObtenerInscripciones(IncripcionData insc, AlumnoData con, materiaData cone){
-        for (Inscripcion inc: insc.ObtenerInscripciones()) {
-            System.out.println("id = "+inc.getIdInscripto());
-            System.out.println("apellido = "+inc.getAlumno().getApellido());
-            System.out.println("materia = "+inc.getMateria().getNombre());
+    public static void pruebaObtenerInscripciones(IncripcionData insc, AlumnoData con, materiaData cone) {
+        for (Inscripcion inc : insc.ObtenerInscripciones()) {
+            System.out.println("id = " + inc.getIdInscripto());
+            System.out.println("apellido = " + inc.getAlumno().getApellido());
+            System.out.println("materia = " + inc.getMateria().getNombre());
         }
-            
-        }
+
     }
 
+    public static void pruebaObtenerInscripcionesporAlumno(IncripcionData insc, AlumnoData con) {
+        for (Alumno alu : con.listaAlumno()) {
+            System.out.println("id " + alu.getId());
+            System.out.println("dni " + alu.getDni());
+            System.out.println(" Apellido " + alu.getApellido());
 
+        }
+
+    }
+
+    public static void pruebaobternerMateriasCursadas(IncripcionData insc, materiaData cone) {
+        for (Materia inc : cone.listaMateria()) {
+            System.out.println("id " + inc.getIdMateria());
+            System.out.println("Nombre " + inc.getNombre());
+        }
+
+    }
+
+    public static void pruebaObtenerMateriasNoCursadas(AlumnoData con){
+        for (Alumno alu: con.listaAlumno()) {
+            System.out.println("id " + alu.getId());
+            System.out.println(" DNI "+ alu.getDni());
+            System.out.println("Apellido " + alu.getApellido());
+        }
+    }
+}

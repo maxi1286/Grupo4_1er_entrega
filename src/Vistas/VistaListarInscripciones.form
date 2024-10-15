@@ -120,6 +120,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="materias inscriptas"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadiomatIncriptasActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioMatNoInscriptas">
       <Properties>
@@ -158,6 +161,9 @@
         <Property name="text" type="java.lang.String" value="anular inscripcion"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBAnularActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBsalir">
       <Properties>

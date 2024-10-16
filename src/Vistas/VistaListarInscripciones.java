@@ -6,12 +6,13 @@ package Vistas;
 
 import java.awt.List;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Alumno;
 import modelo.Inscripcion;
 import modelo.Materia;
 import persistencia.AlumnoData;
-import persistencia.IncripcionData;
+import persistencia.InscripcionData;
 import persistencia.materiaData;
 
 /**
@@ -21,13 +22,12 @@ import persistencia.materiaData;
 public class VistaListarInscripciones extends javax.swing.JInternalFrame {
 
     DefaultTableModel modelo = new DefaultTableModel() {
-        public boolean isCellEditable(int fila, int columna) {
-            return false;
-        }
+        
+        
     };
     private ArrayList<Materia> listaM;
     private ArrayList<Alumno> listaA;
-    private IncripcionData inscdata;
+    private InscripcionData inscdata;
     private materiaData mData;
     private AlumnoData aData;
 
@@ -44,7 +44,7 @@ public class VistaListarInscripciones extends javax.swing.JInternalFrame {
         aData = new AlumnoData();
         listaA = aData.listaAlumno();
         modelo = new DefaultTableModel();
-        inscdata = new IncripcionData();
+        inscdata = new InscripcionData();
         mData = new materiaData();
 
         CargarAlumnos();
@@ -92,6 +92,11 @@ public class VistaListarInscripciones extends javax.swing.JInternalFrame {
         });
 
         jRadioMatNoInscriptas.setText("materias no inscriptas");
+        jRadioMatNoInscriptas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioMatNoInscriptasActionPerformed(evt);
+            }
+        });
 
         jTIncripcion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -108,6 +113,11 @@ public class VistaListarInscripciones extends javax.swing.JInternalFrame {
 
         jBIncribir.setText("incribir");
         jBIncribir.setEnabled(false);
+        jBIncribir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBIncribirActionPerformed(evt);
+            }
+        });
 
         jBAnular.setText("anular inscripcion");
         jBAnular.setEnabled(false);
@@ -197,16 +207,52 @@ public class VistaListarInscripciones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jBAnularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAnularActionPerformed
-        // TODO add your handling code here:
+     int filaseleccionada =jTIncripcion.getSelectedRow();
+        if (filaseleccionada !=-1) {
+            Alumno a = (Alumno) jComboalumno.getSelectedItem();
+            int idMateria = (int) modelo.getValueAt(filaseleccionada, 0);
+            inscdata.BorrarInscripcion(a.getId(),idMateria );
+            BorrarFilaTabla();
+            
+            
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "debe seleccionar un alumno");
+        }
     }//GEN-LAST:event_jBAnularActionPerformed
 
     private void jRadiomatIncriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadiomatIncriptasActionPerformed
-    // BorrarFilaTabla();
-     jRadiomatIncriptas.setSelected(false);
+     BorrarFilaTabla();
+     jRadioMatNoInscriptas.setSelected(false);
      CargarDatosInscriptas();
-     jBAnular.setEnabled(true);
      jBIncribir.setEnabled(false);
+     jBAnular.setEnabled(true);
+     
     }//GEN-LAST:event_jRadiomatIncriptasActionPerformed
+
+    private void jRadioMatNoInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioMatNoInscriptasActionPerformed
+     BorrarFilaTabla();
+     jRadiomatIncriptas.setSelected(false);
+     CargarDatosNoIncriptas();
+     jBAnular.setEnabled(false);
+     jBIncribir.setEnabled(true);
+     
+    }//GEN-LAST:event_jRadioMatNoInscriptasActionPerformed
+
+    private void jBIncribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBIncribirActionPerformed
+    int filaseleccionada = jTIncripcion.getSelectedRow();
+        if (filaseleccionada!=-1) {
+            Alumno a = (Alumno) jComboalumno.getSelectedItem();
+            int idMateria =(int) modelo.getValueAt(filaseleccionada, 0);
+            String nombreMateria = (String) modelo.getValueAt(filaseleccionada, 1);
+            int anio = (int) modelo.getValueAt(filaseleccionada, 2);
+            Materia m = new Materia (idMateria,nombreMateria,anio,true);
+            
+           Inscripcion i =new Inscripcion (0,a,m);
+           inscdata.GuardarIncripcion(i);
+           BorrarFilaTabla();
+        }
+    }//GEN-LAST:event_jBIncribirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

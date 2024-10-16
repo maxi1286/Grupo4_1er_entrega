@@ -6,7 +6,7 @@ import modelo.Alumno;
 import modelo.Inscripcion;
 import modelo.Materia;
 import persistencia.AlumnoData;
-import persistencia.IncripcionData;
+import persistencia.InscripcionData;
 import persistencia.materiaData;
 
 public class test_de_consola {
@@ -14,7 +14,7 @@ public class test_de_consola {
     public static void main(String[] args) throws SQLException {
         AlumnoData con = new AlumnoData();
         materiaData cone = new materiaData();
-        IncripcionData id = new IncripcionData();
+        InscripcionData id = new InscripcionData();
 
         if (con != null) {
             //ALUMNO       
@@ -141,7 +141,7 @@ public class test_de_consola {
         con.actualizarMateria(new Materia(2, "Labo", 2, false));
     }
 
-    public static void pruebaIncribirAlumno(IncripcionData insc, AlumnoData con, materiaData cone) throws SQLException {
+    public static void pruebaIncribirAlumno(InscripcionData insc, AlumnoData con, materiaData cone) throws SQLException {
 
         Alumno al = con.buscarAlumno(5);
         Materia mat = cone.BuscarMateria(7);
@@ -151,16 +151,16 @@ public class test_de_consola {
 
     }
 
-    public static void pruebaActualizarNota(IncripcionData insc, AlumnoData con, materiaData cone) {
+    public static void pruebaActualizarNota(InscripcionData insc, AlumnoData con, materiaData cone) {
         insc.ActualizarNota(3, 7, 10);
 
     }
 
-    public static void pruebaBorrarInscripcion(IncripcionData insc, AlumnoData con, materiaData cone) {
+    public static void pruebaBorrarInscripcion(InscripcionData insc, AlumnoData con, materiaData cone) {
         insc.BorrarInscripcion(3, 7);
     }
 
-    public static void pruebaObtenerInscripciones(IncripcionData insc, AlumnoData con, materiaData cone) {
+    public static void pruebaObtenerInscripciones(InscripcionData insc, AlumnoData con, materiaData cone) {
         for (Inscripcion inc : insc.ObtenerInscripciones()) {
             System.out.println("id = " + inc.getIdInscripto());
             System.out.println("apellido = " + inc.getAlumno().getApellido());
@@ -169,7 +169,7 @@ public class test_de_consola {
 
     }
 
-    public static void pruebaObtenerInscripcionesporAlumno(IncripcionData insc, AlumnoData con) {
+    public static void pruebaObtenerInscripcionesporAlumno(InscripcionData insc, AlumnoData con) {
         for (Alumno alu : con.listaAlumno()) {
             System.out.println("id " + alu.getId());
             System.out.println("dni " + alu.getDni());
@@ -179,7 +179,7 @@ public class test_de_consola {
 
     }
 
-    public static void pruebaobternerMateriasCursadas(IncripcionData insc, materiaData cone) {
+    public static void pruebaobternerMateriasCursadas(InscripcionData insc, materiaData cone) {
         for (Materia inc : cone.listaMateria()) {
             System.out.println("id " + inc.getIdMateria());
             System.out.println("Nombre " + inc.getNombre());

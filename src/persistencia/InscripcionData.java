@@ -15,14 +15,14 @@ import modelo.Conexion;
 import modelo.Inscripcion;
 import modelo.Materia;
 
-public class IncripcionData {
+public class InscripcionData {
 
     private Connection con = null;
 
     private materiaData md = new materiaData();
     private AlumnoData ad = new AlumnoData();
 
-    public IncripcionData() {
+    public InscripcionData() {
         this.con = Conexion.getConexion();
 
     }
@@ -149,9 +149,9 @@ public class IncripcionData {
     public ArrayList<Materia> obternerMateriasCursadas(int idMateria) {
 
         ArrayList<Materia> materias = new ArrayList();
-        String sql = "SELECT inscripcion.idMateria,materia.nombre,materia.año"
-                + "FROM inscripcion,"
-                + "INNER JOIN materia ON inscripcion.idMateria = materia.idMateria"
+        String sql = "SELECT inscripcion.idMateria, materia.nombre, materia.anio " 
+                + " FROM inscripcion "
+                + " INNER JOIN materia ON inscripcion.idMateria = materia.idMateria  "
                 + "WHERE inscripcion.idAlumno = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -167,7 +167,7 @@ public class IncripcionData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error ");
+            JOptionPane.showMessageDialog(null, "ANDA PIPICUCU");
         }
         return materias;
     }

@@ -34,9 +34,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
         escritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jmInscripcion = new javax.swing.JMenu();
-        jmiInscribir = new javax.swing.JMenuItem();
-        jmiNotas = new javax.swing.JMenuItem();
         jmiListaInscripcion = new javax.swing.JMenuItem();
+        jmiNotas = new javax.swing.JMenuItem();
+        jmiInscribir = new javax.swing.JMenuItem();
         jmAlumno = new javax.swing.JMenu();
         jmMateria = new javax.swing.JMenu();
 
@@ -56,13 +56,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         jmInscripcion.setText("Inscripcion");
 
-        jmiInscribir.setText("Inscribir");
-        jmiInscribir.addActionListener(new java.awt.event.ActionListener() {
+        jmiListaInscripcion.setText("Formulario");
+        jmiListaInscripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiInscribirActionPerformed(evt);
+                jmiListaInscripcionActionPerformed(evt);
             }
         });
-        jmInscripcion.add(jmiInscribir);
+        jmInscripcion.add(jmiListaInscripcion);
 
         jmiNotas.setText("Notas");
         jmiNotas.addActionListener(new java.awt.event.ActionListener() {
@@ -72,13 +72,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
         jmInscripcion.add(jmiNotas);
 
-        jmiListaInscripcion.setText("Lista Inscripcion");
-        jmiListaInscripcion.addActionListener(new java.awt.event.ActionListener() {
+        jmiInscribir.setText("Lista Alumnos por Materia");
+        jmiInscribir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiListaInscripcionActionPerformed(evt);
+                jmiInscribirActionPerformed(evt);
             }
         });
-        jmInscripcion.add(jmiListaInscripcion);
+        jmInscripcion.add(jmiInscribir);
 
         jMenuBar1.add(jmInscripcion);
 
@@ -143,6 +143,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiInscribirActionPerformed
 
     private void jmiNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiNotasActionPerformed
+         escritorio.removeAll();
         escritorio.repaint();
         VistaCargaNotas a1 = new VistaCargaNotas();
         a1.setVisible(true);

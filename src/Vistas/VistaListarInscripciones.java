@@ -21,19 +21,19 @@ import persistencia.materiaData;
  */
 public class VistaListarInscripciones extends javax.swing.JInternalFrame {
 
-    DefaultTableModel modelo = new DefaultTableModel() {
-        
-        
+     DefaultTableModel modelo = new DefaultTableModel() {
+        public boolean isCellEditable(int fila, int columna) {
+            return false;
+        }
     };
+            
     private ArrayList<Materia> listaM;
     private ArrayList<Alumno> listaA;
     private InscripcionData inscdata;
     private materiaData mData;
     private AlumnoData aData;
 
-    public boolean isCellEditable(int fila, int columna) {
-        return false;
-    }
+    
 
     /**
      * Creates new form VistaListarInscripciones
@@ -43,10 +43,8 @@ public class VistaListarInscripciones extends javax.swing.JInternalFrame {
         iniciarTabla();
         aData = new AlumnoData();
         listaA = aData.listaAlumno();
-        modelo = new DefaultTableModel();
         inscdata = new InscripcionData();
         mData = new materiaData();
-
         CargarAlumnos();
 
     }
@@ -74,6 +72,11 @@ public class VistaListarInscripciones extends javax.swing.JInternalFrame {
 
         setTitle("Formulario de inscripcion");
 
+        jComboalumno.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboalumnoItemStateChanged(evt);
+            }
+        });
         jComboalumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboalumnoActionPerformed(evt);
@@ -207,52 +210,59 @@ public class VistaListarInscripciones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jBAnularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAnularActionPerformed
-     int filaseleccionada =jTIncripcion.getSelectedRow();
-        if (filaseleccionada !=-1) {
+        int filaseleccionada = jTIncripcion.getSelectedRow();
+        if (filaseleccionada != -1) {
             Alumno a = (Alumno) jComboalumno.getSelectedItem();
             int idMateria = (int) modelo.getValueAt(filaseleccionada, 0);
-            inscdata.BorrarInscripcion(a.getId(),idMateria );
-            BorrarFilaTabla();
-            
-            
-            
-        }else{
+            inscdata.BorrarInscripcion(a.getId(), idMateria);
+            CargarDatosInscriptas();
+
+        } else {
             JOptionPane.showMessageDialog(this, "debe seleccionar un alumno");
         }
     }//GEN-LAST:event_jBAnularActionPerformed
 
     private void jRadiomatIncriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadiomatIncriptasActionPerformed
-     BorrarFilaTabla();
-     jRadioMatNoInscriptas.setSelected(false);
-     CargarDatosInscriptas();
-     jBIncribir.setEnabled(false);
-     jBAnular.setEnabled(true);
-     
+
+        jRadioMatNoInscriptas.setSelected(false);
+        CargarDatosInscriptas();
+        jBIncribir.setEnabled(false);
+        jBAnular.setEnabled(true);
+
     }//GEN-LAST:event_jRadiomatIncriptasActionPerformed
 
     private void jRadioMatNoInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioMatNoInscriptasActionPerformed
-     BorrarFilaTabla();
-     jRadiomatIncriptas.setSelected(false);
-     CargarDatosNoIncriptas();
-     jBAnular.setEnabled(false);
-     jBIncribir.setEnabled(true);
-     
+
+        jRadiomatIncriptas.setSelected(false);
+        CargarDatosNoIncriptas();
+        jBAnular.setEnabled(false);
+        jBIncribir.setEnabled(true);
+
     }//GEN-LAST:event_jRadioMatNoInscriptasActionPerformed
 
     private void jBIncribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBIncribirActionPerformed
-    int filaseleccionada = jTIncripcion.getSelectedRow();
-        if (filaseleccionada!=-1) {
+        int filaseleccionada = jTIncripcion.getSelectedRow();
+        if (filaseleccionada != -1) {
             Alumno a = (Alumno) jComboalumno.getSelectedItem();
-            int idMateria =(int) modelo.getValueAt(filaseleccionada, 0);
+            int idMateria = (int) modelo.getValueAt(filaseleccionada, 0);
             String nombreMateria = (String) modelo.getValueAt(filaseleccionada, 1);
             int anio = (int) modelo.getValueAt(filaseleccionada, 2);
-            Materia m = new Materia (idMateria,nombreMateria,anio,true);
-            
-           Inscripcion i =new Inscripcion (0,a,m);
-           inscdata.GuardarIncripcion(i);
-           BorrarFilaTabla();
+            Materia m = new Materia(idMateria, nombreMateria, anio, true);
+
+            Inscripcion i = new Inscripcion(0, a, m);
+            inscdata.GuardarIncripcion(i);
+             CargarDatosNoIncriptas();
         }
     }//GEN-LAST:event_jBIncribirActionPerformed
+
+    private void jComboalumnoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboalumnoItemStateChanged
+        
+        if (jRadioMatNoInscriptas.isSelected()) {
+            CargarDatosNoIncriptas();
+        }else if(jRadiomatIncriptas.isSelected()){
+            CargarDatosInscriptas();
+        }
+    }//GEN-LAST:event_jComboalumnoItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -297,6 +307,7 @@ public class VistaListarInscripciones extends javax.swing.JInternalFrame {
         //borrar fila de la tabla
         Alumno select = (Alumno) jComboalumno.getSelectedItem();
         listaM = inscdata.obtenerMateriasNoCursadas(select.getId());
+        modelo.setRowCount(0);
         for (Materia m : listaM) {
             modelo.addRow(new Object[]{m.getIdMateria(), m.getNombre(), m.getAnio()});
 
@@ -308,9 +319,10 @@ public class VistaListarInscripciones extends javax.swing.JInternalFrame {
 
         Alumno select = (Alumno) jComboalumno.getSelectedItem();
         ArrayList<Materia> lista = inscdata.obternerMateriasCursadas(select.getId());
+        modelo.setRowCount(0);
         for (Materia m : lista) {
+           
             modelo.addRow(new Object[]{m.getIdMateria(), m.getNombre(), m.getAnio()});
-
         }
     }
 }

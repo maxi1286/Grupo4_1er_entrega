@@ -4,7 +4,14 @@
  */
 package Vistas;
 
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import modelo.Alumno;
+import modelo.Inscripcion;
+import modelo.Materia;
+import persistencia.AlumnoData;
+import persistencia.InscripcionData;
+import persistencia.materiaData;
 
 /**
  *
@@ -12,26 +19,16 @@ import javax.swing.table.DefaultTableModel;
  */
 public class VistaCargaNotas extends javax.swing.JInternalFrame {
 
-    
-    
-    
-    
-    DefaultTableModel modelo = new DefaultTableModel() {
-        public boolean isCellEditable(int fila, int columna) {
-            return false;
-        }
-    };
-    
-    public boolean isCellEditable(int fila, int columna) {
-        return false;
-    }
+    private InscripcionData inscData = new InscripcionData();
+    private materiaData mData = new materiaData();
+    private AlumnoData aData = new AlumnoData();
 
-    /**
-     * Creates new form VistaCargaNotas
-     */
+    DefaultTableModel modelo = new DefaultTableModel();
+
     public VistaCargaNotas() {
         initComponents();
-         iniciarTabla();
+        iniciarTabla();
+        llenarCombo();
     }
 
     /**
@@ -45,7 +42,7 @@ public class VistaCargaNotas extends javax.swing.JInternalFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbAlumnos = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTNota = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
@@ -56,6 +53,12 @@ public class VistaCargaNotas extends javax.swing.JInternalFrame {
         jLabel1.setText("CARGA DE NOTAS");
 
         jLabel2.setText("SELECCIONE UN ALUMNO");
+
+        cbAlumnos.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbAlumnosItemStateChanged(evt);
+            }
+        });
 
         jTNota.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -92,7 +95,7 @@ public class VistaCargaNotas extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cbAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton1)
@@ -112,7 +115,7 @@ public class VistaCargaNotas extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(54, 54, 54)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
@@ -129,11 +132,31 @@ public class VistaCargaNotas extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void cbAlumnosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbAlumnosItemStateChanged
+        Alumno select = (Alumno) cbAlumnos.getSelectedItem();
+        ArrayList<Materia> list = inscData.obternerMateriasCursadas(select.getId());
+        ArrayList<Inscripcion> ins = inscData.ObtenerInscripcionesporAlumno(select.getId());
+
+        System.out.println(ins);
+        System.out.println(list);
+
+        double nota = 0;
+        modelo.setRowCount(0);
+        for (Materia m : list) {
+            for (Inscripcion in : ins) {
+                if (m.getNombre().equalsIgnoreCase(in.getMateria().getNombre())) {
+                    nota = in.getNota();
+                }
+
+            }
+            modelo.addRow(new Object[]{m.getIdMateria(), m.getNombre(), nota});
+    }//GEN-LAST:event_cbAlumnosItemStateChanged
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<Alumno> cbAlumnos;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -144,11 +167,14 @@ public class VistaCargaNotas extends javax.swing.JInternalFrame {
         modelo.addColumn("codigo");
         modelo.addColumn("Nombre");
         modelo.addColumn("nota");
-        
 
-      jTNota.setModel(modelo);
+        jTNota.setModel(modelo);
     }
 
-
+    public void llenarCombo() {
+        for (Alumno al : aData.listaAlumno()) {
+            cbAlumnos.addItem(al);
+        }
+    }
 
 }

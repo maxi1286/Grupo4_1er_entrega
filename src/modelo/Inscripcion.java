@@ -61,6 +61,11 @@ public class Inscripcion {
         this.materia = materia;
     }
 
+    @Override
+    public String toString() {
+        return "Inscripcion{" + "idInscripto=" + idInscripto + ", nota=" + nota + ", alumno=" + alumno + ", materia=" + materia + '}';
+    }
+
     
     
 }

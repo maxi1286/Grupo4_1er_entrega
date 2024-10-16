@@ -103,7 +103,7 @@ public class AlumnoData {
     public Alumno buscarAlumno(int id) {
         Alumno alumno = new Alumno();
         try {
-            String query = "SELECT * FROM `alumno` WHERE idAlumno = ? and estado = 1";
+            String query = "SELECT * FROM `alumno` WHERE idAlumno = ?";
             PreparedStatement ps = con.prepareStatement(query);
             ps.setInt(1, id);
             ResultSet resultado = ps.executeQuery();

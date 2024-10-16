@@ -9,12 +9,12 @@
             <Property name="text" type="java.lang.String" value="Inscripcion"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jmiInscribir">
+            <MenuItem class="javax.swing.JMenuItem" name="jmiListaInscripcion">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Inscribir"/>
+                <Property name="text" type="java.lang.String" value="Formulario"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiInscribirActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiListaInscripcionActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmiNotas">
@@ -25,12 +25,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiNotasActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jmiListaInscripcion">
+            <MenuItem class="javax.swing.JMenuItem" name="jmiInscribir">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Lista Inscripcion"/>
+                <Property name="text" type="java.lang.String" value="Lista Alumnos por Materia"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiListaInscripcionActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiInscribirActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

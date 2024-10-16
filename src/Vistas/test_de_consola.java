@@ -17,6 +17,7 @@ public class test_de_consola {
         InscripcionData id = new InscripcionData();
 
         if (con != null) {
+            
             //ALUMNO       
             //pruebaGuardarAlumnos(con); //Cada vez que se vuelva a guardar reiniciar el autoIncremental a 1 en la parte de operaciones
             //pruebaBorrarAlumno(con);
@@ -36,18 +37,18 @@ public class test_de_consola {
             //pruebaActualizarAlumno(cone);
             
             //INSCRIPCION
-           //pruebaIncribirAlumno(id, con, cone);
+            //pruebaIncribirAlumno(id, con, cone);
             //pruebaActualizarNota(id,con,cone);
             //pruebaBorrarInscripcion(id,con,cone);
             //pruebaObtenerInscripciones( id, con,  cone);
             //pruebaobternerMateriasCursadas(id,cone);
-             //pruebaObtenerInscripcionesporAlumno(id, con);
-             //pruebaObtenerMateriasNoCursadas( con);
-        
-        
+            //pruebaObtenerInscripcionesporAlumno(id, con);
+            //pruebaObtenerMateriasNoCursadas(id,cone);
+
         } else {
             System.out.println("Error: No se pudo establecer la conexión con la base de datos.");
         }
+        
     }
 
     public static void pruebaGuardarAlumnos(AlumnoData con) {
@@ -143,21 +144,35 @@ public class test_de_consola {
 
     public static void pruebaIncribirAlumno(InscripcionData insc, AlumnoData con, materiaData cone) throws SQLException {
 
-        Alumno al = con.buscarAlumno(5);
-        Materia mat = cone.BuscarMateria(7);
+        Alumno al = con.buscarAlumno(1);
+        Materia mat = cone.BuscarMateria(4);
         Inscripcion ins = new Inscripcion(8, al, mat);
 
+        Alumno al2 = con.buscarAlumno(2);
+        
+        Materia mat2 = cone.BuscarMateria(4);
+        Inscripcion ins2 = new Inscripcion(9, al2, mat2);
+
+        Alumno al3 = con.buscarAlumno(3);
+        Materia mat3 = cone.BuscarMateria(1);
+        Inscripcion ins3 = new Inscripcion(5, al3, mat3);
+
         insc.GuardarIncripcion(ins);
+        insc.GuardarIncripcion(ins2);
+        insc.GuardarIncripcion(ins3);
 
     }
 
     public static void pruebaActualizarNota(InscripcionData insc, AlumnoData con, materiaData cone) {
-        insc.ActualizarNota(3, 7, 10);
+        insc.ActualizarNota(2, 4, 10);
+        insc.ActualizarNota(1, 4, 1);
 
     }
 
     public static void pruebaBorrarInscripcion(InscripcionData insc, AlumnoData con, materiaData cone) {
-        insc.BorrarInscripcion(3, 7);
+        insc.BorrarInscripcion(1, 4);
+        insc.BorrarInscripcion(2, 4);
+        insc.BorrarInscripcion(3, 1);
     }
 
     public static void pruebaObtenerInscripciones(InscripcionData insc, AlumnoData con, materiaData cone) {
@@ -180,18 +195,16 @@ public class test_de_consola {
     }
 
     public static void pruebaobternerMateriasCursadas(InscripcionData insc, materiaData cone) {
-        for (Materia inc : cone.listaMateria()) {
+        for (Materia inc : insc.obternerMateriasCursadas(1)) {
             System.out.println("id " + inc.getIdMateria());
             System.out.println("Nombre " + inc.getNombre());
         }
 
     }
 
-    public static void pruebaObtenerMateriasNoCursadas(AlumnoData con){
-        for (Alumno alu: con.listaAlumno()) {
-            System.out.println("id " + alu.getId());
-            System.out.println(" DNI "+ alu.getDni());
-            System.out.println("Apellido " + alu.getApellido());
+    public static void pruebaObtenerMateriasNoCursadas(InscripcionData insc, materiaData cone) {
+        for (Materia mate : insc.obtenerMateriasNoCursadas(1)) {
+            System.out.println(mate.toString());
         }
     }
 }

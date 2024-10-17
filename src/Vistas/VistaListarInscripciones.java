@@ -42,7 +42,7 @@ public class VistaListarInscripciones extends javax.swing.JInternalFrame {
         initComponents();
         iniciarTabla();
         aData = new AlumnoData();
-        listaA = aData.listaAlumno();
+        listaA = aData.listaAlumnoActivo();
         inscdata = new InscripcionData();
         mData = new materiaData();
         CargarAlumnos();

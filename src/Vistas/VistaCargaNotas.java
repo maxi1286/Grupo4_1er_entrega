@@ -46,7 +46,7 @@ public class VistaCargaNotas extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTNota = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setTitle("carga de notas");
 
@@ -80,7 +80,12 @@ public class VistaCargaNotas extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton2.setText("SALIR");
+        jButton3.setText("Salir");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,8 +104,8 @@ public class VistaCargaNotas extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton1)
-                        .addGap(78, 78, 78)
-                        .addComponent(jButton2)))
+                        .addGap(75, 75, 75)
+                        .addComponent(jButton3)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(131, 131, 131)
@@ -121,7 +126,7 @@ public class VistaCargaNotas extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButton3))
                 .addContainerGap())
         );
 
@@ -129,34 +134,27 @@ public class VistaCargaNotas extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        int fila = jTNota.getSelectedRow();
+        int idMateria = (int) modelo.getValueAt(fila, 0);
+        Alumno al = (Alumno) cbAlumnos.getSelectedItem();
+        int nota = Integer.parseInt((String) modelo.getValueAt(fila, 2));
+        inscData.ActualizarNota(al.getId(), idMateria, nota);
+        cargarTabla();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cbAlumnosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbAlumnosItemStateChanged
-        Alumno select = (Alumno) cbAlumnos.getSelectedItem();
-        ArrayList<Materia> list = inscData.obternerMateriasCursadas(select.getId());
-        ArrayList<Inscripcion> ins = inscData.ObtenerInscripcionesporAlumno(select.getId());
-
-        System.out.println(ins);
-        System.out.println(list);
-
-        double nota = 0;
-        modelo.setRowCount(0);
-        for (Materia m : list) {
-            for (Inscripcion in : ins) {
-                if (m.getNombre().equalsIgnoreCase(in.getMateria().getNombre())) {
-                    nota = in.getNota();
-                }
-
-            }
-            modelo.addRow(new Object[]{m.getIdMateria(), m.getNombre(), nota});
+        cargarTabla();
     }//GEN-LAST:event_cbAlumnosItemStateChanged
-    }
+    
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        hide();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<Alumno> cbAlumnos;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -177,4 +175,19 @@ public class VistaCargaNotas extends javax.swing.JInternalFrame {
         }
     }
 
+    public void cargarTabla() {
+        Alumno select = (Alumno) cbAlumnos.getSelectedItem();
+        ArrayList<Materia> list = inscData.obternerMateriasCursadas(select.getId());
+        ArrayList<Inscripcion> ins = inscData.ObtenerInscripcionesporAlumno(select.getId());
+        int nota = 0;
+        modelo.setRowCount(0);
+        for (Materia m : list) {
+            for (Inscripcion in : ins) {
+                if (m.getNombre().equalsIgnoreCase(in.getMateria().getNombre())) {
+                    nota = in.getNota();
+                }
+            }
+            modelo.addRow(new Object[]{m.getIdMateria(), m.getNombre(), nota});
+        }
+    }
 }

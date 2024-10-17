@@ -22,12 +22,13 @@ import org.mariadb.jdbc.Statement;
  * @author Fabricio Zalazar
  */
 public class materiaData {
-    private Connection con=null;
+
+    private Connection con = null;
 
     public materiaData() {
-        con=Conexion.getConexion();
+        con = Conexion.getConexion();
     }
-    
+
     public void GuardarMateria(Materia materia) {
 
         String sql = "INSERT INTO materia(nombre,anio,estado) VALUES (?,?,?)";
@@ -50,9 +51,13 @@ public class materiaData {
         }
 
     }
-    
+
     public void borrarMateria(int id) {
         try {
+            String sql2 = "DELETE FROM inscripcion WHERE idMateria = ?";
+            PreparedStatement ps2 = con.prepareStatement(sql2);
+            ps2.setInt(1, id);
+            int exito2 = ps2.executeUpdate();
             String sql = "DELETE FROM `materia` WHERE  idMateria = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
@@ -67,7 +72,7 @@ public class materiaData {
         }
 
     }
-    
+
     public void altaLogica(int id) {
         String sql = "UPDATE `materia` SET estado=1 WHERE idMateria=?";
         try {
@@ -81,10 +86,17 @@ public class materiaData {
             Logger.getLogger(materiaData.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-     public void bajaLogica(int id) {
+
+    public void bajaLogica(int id) {
+
+        String sql2 = "DELETE FROM inscripcion WHERE idMateria = ?";
         String sql = "UPDATE `materia` SET estado=0 WHERE idMateria=?";
         try {
+
+            PreparedStatement ps2 = con.prepareStatement(sql2);
+            ps2.setInt(1, id);
+            int exito2 = ps2.executeUpdate();
+
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             int exito = ps.executeUpdate();
@@ -95,11 +107,11 @@ public class materiaData {
             Logger.getLogger(materiaData.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-     
-     public ArrayList<Materia> listaMateria() {
+
+    public ArrayList<Materia> listaMateria() {
         ArrayList<Materia> listaMaterias = new ArrayList();
         try {
-            String query = "SELECT * FROM materia";
+            String query = "SELECT * FROM materia ";
             PreparedStatement ps = con.prepareStatement(query);
             ResultSet resultado = ps.executeQuery();
             while (resultado.next()) {
@@ -116,8 +128,8 @@ public class materiaData {
         }
         return listaMaterias;
     }
-     
-     public Materia BuscarMateria(int id) {
+
+    public Materia BuscarMateria(int id) {
         Materia materia = new Materia();
         try {
             String query = "SELECT * FROM materia WHERE idMateria=?";
@@ -136,12 +148,38 @@ public class materiaData {
         }
         return materia;
     }
-     
-      public void actualizarMateria(Materia materia) {
+
+   public ArrayList<Materia> listaMateriaActiva() {
+        ArrayList<Materia> listaMaterias = new ArrayList();
+        try {
+            String query = "SELECT * FROM materia where estado=1";
+            PreparedStatement ps = con.prepareStatement(query);
+            ResultSet resultado = ps.executeQuery();
+            while (resultado.next()) {
+                Materia materia = new Materia();
+                materia.setIdMateria(resultado.getInt("idMateria"));
+                materia.setNombre(resultado.getString("nombre"));
+                materia.setAnio(resultado.getInt("anio"));
+                materia.setEstado(resultado.getBoolean("estado"));
+                listaMaterias.add(materia);
+            }
+            ps.close();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error al devolver la lista de materias" + ex);
+        }
+        return listaMaterias;
+    }
+    public void actualizarMateria(Materia materia) {
 
         String query = "UPDATE materia SET idMateria=?, nombre = ?,anio = ?, estado = ? WHERE idMateria = ?";
 
         try {
+            if (!materia.isEstado()) {
+                String sql2 = "DELETE FROM inscripcion WHERE idMateria = ?";
+                PreparedStatement ps2 = con.prepareStatement(sql2);
+                ps2.setInt(1, materia.getIdMateria());
+                int exito2 = ps2.executeUpdate();
+            }
             PreparedStatement ps = con.prepareStatement(query);
             //Recibe los parametros de la clase objeto
             ps.setInt(1, materia.getIdMateria());

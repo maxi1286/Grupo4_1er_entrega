@@ -142,8 +142,8 @@ public class VistaMostrarAlumnos extends javax.swing.JInternalFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         int filaSelect = jTMostrarAlumnno.getSelectedRow();
         int dni = (int) jTMostrarAlumnno.getValueAt(filaSelect, 0);
-        
         Alumno al = data.buscarAlumnoPorDni(dni);
+        System.out.println(al.toString());
         data.BorrarAlumno(al.getId());
         llenarTabla();
     }//GEN-LAST:event_btnEliminarActionPerformed

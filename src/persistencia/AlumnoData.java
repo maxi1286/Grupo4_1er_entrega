@@ -85,10 +85,19 @@ public class AlumnoData {
 
     public void BorrarAlumno(int id) {
         try {
-            String sql = "DELETE FROM `alumno` WHERE  idAlumno = ?";
+            String sql2 = "DELETE FROM inscripcion WHERE idAlumno = ?";
+            PreparedStatement ps2 = con.prepareStatement(sql2);
+            ps2.setInt(1, id);
+            int exito2 = ps2.executeUpdate();
+            
+            String sql = "DELETE FROM alumno WHERE  idAlumno = ?";
+
             PreparedStatement ps = con.prepareStatement(sql);
+
             ps.setInt(1, id);
+
             int exito = ps.executeUpdate();
+
             if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "el alumno fue eliminado correctamente");
 
@@ -114,7 +123,7 @@ public class AlumnoData {
                 alumno.setDni(resultado.getInt("dni"));
                 alumno.setFechaNacimiento(resultado.getDate("fechaNacimiento").toLocalDate());
                 alumno.setEstado(resultado.getBoolean("estado"));
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Alumno no encontrado");
             }
             ps.close();
@@ -123,7 +132,7 @@ public class AlumnoData {
         }
         return alumno;
     }
-    
+
     public Alumno buscarAlumnoPorDni(int dni) {
         Alumno alumno = new Alumno();
         try {
@@ -145,11 +154,34 @@ public class AlumnoData {
         }
         return alumno;
     }
-    
+
     public ArrayList<Alumno> listaAlumno() {
         ArrayList<Alumno> listaAlumnos = new ArrayList();
         try {
             String query = "SELECT * FROM alumno";
+            PreparedStatement ps = con.prepareStatement(query);
+            ResultSet resultado = ps.executeQuery();
+            while (resultado.next()) {
+                Alumno alumno = new Alumno();
+                alumno.setId(resultado.getInt("idAlumno"));
+                alumno.setApellido(resultado.getString("apellido"));
+                alumno.setNombre(resultado.getString("nombre"));
+                alumno.setDni(resultado.getInt("dni"));
+                alumno.setFechaNacimiento(resultado.getDate("fechaNacimiento").toLocalDate());
+                alumno.setEstado(resultado.getBoolean("estado"));
+                listaAlumnos.add(alumno);
+            }
+            ps.close();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error al devolver la lista de alumnos" + ex);
+        }
+        return listaAlumnos;
+    }
+
+    public ArrayList<Alumno> listaAlumnoActivo() {
+        ArrayList<Alumno> listaAlumnos = new ArrayList();
+        try {
+            String query = "SELECT * FROM alumno where estado=1";
             PreparedStatement ps = con.prepareStatement(query);
             ResultSet resultado = ps.executeQuery();
             while (resultado.next()) {
@@ -182,9 +214,9 @@ public class AlumnoData {
             ps.setBoolean(4, alumno.isEstado());
             ps.setInt(5, alumno.getId());
             //Ejecuta la consulta
-            int rs= ps.executeUpdate();
-            if(rs==1){
-                 JOptionPane.showMessageDialog(null, "Alumno actualizado");
+            int rs = ps.executeUpdate();
+            if (rs == 1) {
+                JOptionPane.showMessageDialog(null, "Alumno actualizado");
             }
             ps.close();
 

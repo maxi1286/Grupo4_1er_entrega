@@ -136,7 +136,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private void jmiInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiInscribirActionPerformed
          escritorio.removeAll();
         escritorio.repaint();
-        VistaInscripcion a1 = new VistaInscripcion();
+        VistaListarAlumnosPorMateria a1 = new VistaListarAlumnosPorMateria();
         a1.setVisible(true);
         escritorio.add(a1);
         escritorio.moveToFront(a1);

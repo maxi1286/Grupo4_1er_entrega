@@ -147,7 +147,7 @@ public class InscripcionData {
     }
 
     public ArrayList<Materia> obternerMateriasCursadas(int idAlumno) {
-                
+
         ArrayList<Materia> materias = new ArrayList();
         String sql = "SELECT materia.idMateria, materia.nombre, materia.anio FROM inscripcion join materia ON inscripcion.idMateria = materia.idMateria  WHERE idAlumno=?";
         try {
@@ -155,14 +155,14 @@ public class InscripcionData {
 
             ps.setInt(1, idAlumno);
             ResultSet rs = ps.executeQuery();
-                        
+
             while (rs.next()) {
                 Materia mate = new Materia();
                 mate.setIdMateria(rs.getInt("idMateria"));
                 mate.setNombre(rs.getString("nombre"));
                 mate.setAnio(rs.getInt("anio"));
                 materias.add(mate);
-                
+
             }
             ps.close();
         } catch (SQLException ex) {
@@ -200,8 +200,9 @@ public class InscripcionData {
     public ArrayList<Alumno> obtenerAlumnoXMateria(int idMateria) {
 
         ArrayList<Alumno> alumnoMateria = new ArrayList();
-        String sql = "SELECT a.idAlumno,dni,nombre,apellid,fechaNacimiento,estado"
-                + "FROM inscripcion i,alumno a WHERE i.idAlumno =a.idAlumno AND idMateria = ? AND a.estado = 1";
+        String sql = "SELECT a.idAlumno, dni, nombre, apellido, fechaNacimiento, estado "
+            + "FROM inscripcion i, alumno a WHERE i.idAlumno = a.idAlumno AND idMateria = ? AND a.estado = 1";
+       
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idMateria);
@@ -226,4 +227,21 @@ public class InscripcionData {
         return alumnoMateria;
     }
 
+    public ArrayList<Integer> obtenerNotas(int id) {
+
+        ArrayList<Integer> notas = new ArrayList();
+        String sql = "SELECT idMateria,nota FROM inscripcion WHERE idAlumno=?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery(sql);
+            while (rs.next()) {
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(InscripcionData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return notas;
+    }
 }

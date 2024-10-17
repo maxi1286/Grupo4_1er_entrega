@@ -44,17 +44,21 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
         lblEstado = new javax.swing.JLabel();
         checkEstado = new javax.swing.JCheckBox();
         lblFechaNacimiento = new javax.swing.JLabel();
-        dcFechaNacimiento = new com.toedter.calendar.JDateChooser();
         btnNuevo = new javax.swing.JButton();
         btnMostrarAlumnos = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
+        dcFechaNacimiento = new com.toedter.calendar.JDateChooser();
 
-        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
 
+        lblTitulo.setBackground(new java.awt.Color(255, 255, 153));
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(255, 255, 153));
         lblTitulo.setText("Alumno");
 
+        lblDocumento.setBackground(new java.awt.Color(255, 255, 255));
+        lblDocumento.setForeground(new java.awt.Color(255, 255, 255));
         lblDocumento.setText("Documento:");
 
         txtDocumento.addActionListener(new java.awt.event.ActionListener() {
@@ -70,6 +74,8 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
             }
         });
 
+        lblApellido.setBackground(new java.awt.Color(255, 255, 255));
+        lblApellido.setForeground(new java.awt.Color(255, 255, 255));
         lblApellido.setText("Apellido:");
 
         txtApellido.addActionListener(new java.awt.event.ActionListener() {
@@ -78,8 +84,12 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
             }
         });
 
+        lblNombre.setBackground(new java.awt.Color(255, 255, 255));
+        lblNombre.setForeground(new java.awt.Color(255, 255, 255));
         lblNombre.setText("Nombre:");
 
+        lblEstado.setBackground(new java.awt.Color(255, 255, 255));
+        lblEstado.setForeground(new java.awt.Color(255, 255, 255));
         lblEstado.setText("Estado");
 
         checkEstado.addActionListener(new java.awt.event.ActionListener() {
@@ -88,8 +98,11 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
             }
         });
 
+        lblFechaNacimiento.setBackground(new java.awt.Color(255, 255, 255));
+        lblFechaNacimiento.setForeground(new java.awt.Color(255, 255, 255));
         lblFechaNacimiento.setText("Fecha de Nacimiento:");
 
+        btnNuevo.setBackground(new java.awt.Color(0, 102, 0));
         btnNuevo.setText("Nuevo");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,6 +124,7 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
             }
         });
 
+        btnSalir.setBackground(new java.awt.Color(204, 0, 0));
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,8 +156,8 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
                                     .addComponent(lblEstado))
                                 .addGap(89, 89, 89)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(dcFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(checkEstado)))
+                                    .addComponent(checkEstado)
+                                    .addComponent(dcFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -192,11 +206,14 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(checkEstado)
                     .addComponent(lblEstado))
-                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblFechaNacimiento)
-                    .addComponent(dcFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(lblFechaNacimiento))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(dcFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevo)
                     .addComponent(btnGuardar)
@@ -220,7 +237,7 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
         );
         jdpAlumnoLayout.setVerticalGroup(
             jdpAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 521, Short.MAX_VALUE)
+            .addGap(0, 524, Short.MAX_VALUE)
             .addGroup(jdpAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jdpAlumnoLayout.createSequentialGroup()
                     .addContainerGap()

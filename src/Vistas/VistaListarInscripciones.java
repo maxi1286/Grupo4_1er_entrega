@@ -130,6 +130,7 @@ public class VistaListarInscripciones extends javax.swing.JInternalFrame {
             }
         });
 
+        jBsalir.setBackground(new java.awt.Color(153, 0, 0));
         jBsalir.setText("salir");
         jBsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

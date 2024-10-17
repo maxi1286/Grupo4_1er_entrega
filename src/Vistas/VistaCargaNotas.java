@@ -73,6 +73,7 @@ public class VistaCargaNotas extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTNota);
 
+        jButton1.setBackground(new java.awt.Color(0, 102, 0));
         jButton1.setText("GUARDAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,6 +81,7 @@ public class VistaCargaNotas extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(153, 0, 0));
         jButton3.setText("Salir");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

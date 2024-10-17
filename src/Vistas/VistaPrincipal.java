@@ -19,7 +19,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
      */
     public VistaPrincipal() {
         initComponents();
-       
+        this.setLocationRelativeTo(null);
+        this.setSize(500, 520);
     }
 
     /**
@@ -31,7 +32,16 @@ public class VistaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        escritorio = new javax.swing.JDesktopPane();
+        ImageIcon icono = new ImageIcon(getClass().getResource("/Imagenes/universidad.jpg"));
+        Image miImagen = icono.getImage();
+        escritorio = new javax.swing.JDesktopPane(){
+
+            public void paintComponent(Graphics g){
+                super.paintComponent(g);
+                g.drawImage(miImagen, 0, 0, getWidth(),getHeight(),this);
+
+            }
+        };
         jMenuBar1 = new javax.swing.JMenuBar();
         jmInscripcion = new javax.swing.JMenu();
         jmiListaInscripcion = new javax.swing.JMenuItem();

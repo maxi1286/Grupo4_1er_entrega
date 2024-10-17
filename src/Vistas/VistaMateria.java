@@ -49,6 +49,8 @@ public class VistaMateria extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         rbActivo = new javax.swing.JRadioButton();
 
+        jpMateria.setForeground(new java.awt.Color(102, 102, 102));
+
         jbCodigo.setText("Codigo");
 
         jLNombre.setText("Nombre");
@@ -71,6 +73,7 @@ public class VistaMateria extends javax.swing.JInternalFrame {
             }
         });
 
+        jBNuevo.setBackground(new java.awt.Color(0, 102, 0));
         jBNuevo.setText("Nuevo");
         jBNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -204,9 +207,7 @@ public class VistaMateria extends javax.swing.JInternalFrame {
                     .addComponent(jTNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(jpMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpMateriaLayout.createSequentialGroup()
-                        .addComponent(jbAño)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jbAño)
                     .addGroup(jpMateriaLayout.createSequentialGroup()
                         .addComponent(jtAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)

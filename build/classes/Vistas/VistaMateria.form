@@ -30,6 +30,11 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JDesktopPane" name="jpMateria">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="66" green="66" red="66" type="rgb"/>
+        </Property>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -110,10 +115,7 @@
                   </Group>
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jbAño" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="55" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jbAño" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jtAño" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
@@ -181,6 +183,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="jBNuevo">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="66" red="0" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Nuevo"/>
           </Properties>
           <Events>

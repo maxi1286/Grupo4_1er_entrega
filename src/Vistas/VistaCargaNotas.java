@@ -170,7 +170,7 @@ public class VistaCargaNotas extends javax.swing.JInternalFrame {
     }
 
     public void llenarCombo() {
-        for (Alumno al : aData.listaAlumno()) {
+        for (Alumno al : aData.listaAlumnoActivo()) {
             cbAlumnos.addItem(al);
         }
     }

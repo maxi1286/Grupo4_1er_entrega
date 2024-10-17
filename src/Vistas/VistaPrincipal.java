@@ -20,7 +20,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     public VistaPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.setSize(500, 520);
+        this.setSize(1000, 800);
     }
 
     /**

@@ -3,17 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Fabricio%20Zalazar/Documents/GitHub/Grupo4_1er_entrega/src/Vistas/VistaCargaNotas.java</file>
-            <file>file:/C:/Users/Fabricio%20Zalazar/Documents/GitHub/Grupo4_1er_entrega/src/Vistas/VistaMateria.java</file>
-            <file>file:/C:/Users/Fabricio%20Zalazar/Documents/GitHub/Grupo4_1er_entrega/src/persistencia/InscripcionData.java</file>
-            <file>file:/C:/Users/Fabricio%20Zalazar/Documents/GitHub/Grupo4_1er_entrega/src/Vistas/VistaPrincipal.java</file>
-            <file>file:/C:/Users/Fabricio%20Zalazar/Documents/GitHub/Grupo4_1er_entrega/src/modelo/Materia.java</file>
-            <file>file:/C:/Users/Fabricio%20Zalazar/Documents/GitHub/Grupo4_1er_entrega/src/Vistas/test_de_consola.java</file>
-            <file>file:/C:/Users/Fabricio%20Zalazar/Documents/GitHub/Grupo4_1er_entrega/src/Vistas/VistaMostrarMateria.java</file>
-            <file>file:/C:/Users/Fabricio%20Zalazar/Documents/GitHub/Grupo4_1er_entrega/src/Vistas/VistaMostrarAlumnos.java</file>
-            <file>file:/C:/Users/Fabricio%20Zalazar/Documents/GitHub/Grupo4_1er_entrega/src/modelo/Inscripcion.java</file>
-            <file>file:/C:/Users/Fabricio%20Zalazar/Documents/GitHub/Grupo4_1er_entrega/src/Vistas/VistaListarInscripciones.java</file>
-            <file>file:/C:/Users/Fabricio%20Zalazar/Documents/GitHub/Grupo4_1er_entrega/src/Vistas/VistaInscripcion.java</file>
+            <file>file:/C:/Users/zalaz/Documents/GitHub/Grupo4_2da_entrega/src/Vistas/VistaPrincipal.java</file>
+            <file>file:/C:/Users/zalaz/Documents/GitHub/Grupo4_2da_entrega/src/Vistas/VistaMostrarAlumnos.java</file>
+            <file>file:/C:/Users/zalaz/Documents/GitHub/Grupo4_2da_entrega/src/Vistas/VistaMostrarMateria.java</file>
+            <file>file:/C:/Users/zalaz/Documents/GitHub/Grupo4_2da_entrega/src/Vistas/VistaCargaNotas.java</file>
+            <file>file:/C:/Users/zalaz/Documents/GitHub/Grupo4_2da_entrega/src/Vistas/VistaAlumno.java</file>
+            <file>file:/C:/Users/zalaz/Documents/GitHub/Grupo4_2da_entrega/src/modelo/Inscripcion.java</file>
+            <file>file:/C:/Users/zalaz/Documents/GitHub/Grupo4_2da_entrega/src/modelo/Conexion.java</file>
+            <file>file:/C:/Users/zalaz/Documents/GitHub/Grupo4_2da_entrega/src/persistencia/InscripcionData.java</file>
+            <file>file:/C:/Users/zalaz/Documents/GitHub/Grupo4_2da_entrega/src/Vistas/test_de_consola.java</file>
         </group>
     </open-files>
 </project-private>

@@ -59,7 +59,7 @@ public class InscripcionData {
             ps.setInt(3, idMateria);
             int filas = ps.executeUpdate();
             if (filas > 0) {
-                JOptionPane.showMessageDialog(null, "nota actualizada");
+                
             }
             ps.close();
         } catch (SQLException ex) {

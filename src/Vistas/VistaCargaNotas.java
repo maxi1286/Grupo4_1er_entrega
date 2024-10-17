@@ -147,7 +147,6 @@ public class VistaCargaNotas extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "La nota debe estar entre 0 y 10.");
                 return;
             }
-
             inscData.ActualizarNota(al.getId(), idMateria, nota);
         }
 

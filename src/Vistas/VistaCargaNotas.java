@@ -5,6 +5,7 @@
 package Vistas;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Alumno;
 import modelo.Inscripcion;
@@ -136,18 +137,29 @@ public class VistaCargaNotas extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int fila = jTNota.getSelectedRow();
-        int idMateria = (int) modelo.getValueAt(fila, 0);
         Alumno al = (Alumno) cbAlumnos.getSelectedItem();
-        int nota = Integer.parseInt((String) modelo.getValueAt(fila, 2));
-        inscData.ActualizarNota(al.getId(), idMateria, nota);
+
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            int idMateria = (int) modelo.getValueAt(i, 0);
+            String notaStr = modelo.getValueAt(i, 2).toString();
+            int nota = Integer.parseInt(notaStr);
+            if (nota < 0 || nota > 10) {
+                JOptionPane.showMessageDialog(this, "La nota debe estar entre 0 y 10.");
+                return;
+            }
+
+            inscData.ActualizarNota(al.getId(), idMateria, nota);
+        }
+
         cargarTabla();
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cbAlumnosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbAlumnosItemStateChanged
         cargarTabla();
     }//GEN-LAST:event_cbAlumnosItemStateChanged
-    
+
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         hide();
     }//GEN-LAST:event_jButton3ActionPerformed
